@@ -15,7 +15,16 @@
 <meta property="og:description" content="##前期工作 首先基础工作是要下载git  node.js  hexo(需要先下载前两个才能安装)注册github账号。 ###git安装地址：https://git-scm.com/download/ ###node.js安装地址：http://nodejs.cn/download/ ##一.安装hexo   1.git和nodejs安装好后，在桌面单击右键会出现git bash here">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/c38a0784ly1fn8bywmdufj207p0iit9b.jpg">
-<meta property="og:updated_time" content="2019-02-26T06:42:36.482Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5791489-97f63771ab215c68.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5791489-4a0297ce482853b8.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5791489-5ec4f58c22413af0.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171021232413224-1288183746.png">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/c38a0784ly1fn8bxjgd4vj20km0grmyu.jpg">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153603724-1692083166.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153612084-222458600.png">
+<meta property="og:updated_time" content="2019-02-26T07:51:02.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github搭建博客详解">
 <meta name="twitter:description" content="##前期工作 首先基础工作是要下载git  node.js  hexo(需要先下载前两个才能安装)注册github账号。 ###git安装地址：https://git-scm.com/download/ ###node.js安装地址：http://nodejs.cn/download/ ##一.安装hexo   1.git和nodejs安装好后，在桌面单击右键会出现git bash here">
@@ -96,12 +105,43 @@
 <p>   2.点击git bash here,输入npm install -g hexo  如果速度很慢的话可以换成npm install -g hexo –registry <a href="http://registry.cnpmjs.org" target="_blank" rel="noopener">http://registry.cnpmjs.org</a></p>
 <pre><code>npm install -g hexo
 npm install -g hexo --registry http://registry.cnpmjs.org
-</code></pre><p>   3.初始化hexo  <strong><em>注意：这时要到建立Blog的文件夹下执行命令</em></strong><br>打开文件夹点击右键git bash here,输入 hexo init(初始化)这时会生成相应文件</p>
-
+</code></pre><p>   3.初始化hexo  <strong><em>注意：这时要到建立Blog的文件夹下执行命令</em></strong><br>打开文件夹点击右键git bash here,输入 hexo init(初始化)这时会生成相应文件<br><img src="https://upload-images.jianshu.io/upload_images/5791489-97f63771ab215c68.png?imageMogr2/auto-orient/" alt></p>
+<p>   再npm install,下载hexo所需的依赖项。（同上面一样可以指定别的源安装）npm install –registry <a href="http://registry.cnpmjs.org" target="_blank" rel="noopener">http://registry.cnpmjs.org</a></p>
+<pre><code>npm install
+npm install --registry http://registry.cnpmjs.org
+</code></pre><p>  4.生成静态文件,输入hexo g<br><img src="https://upload-images.jianshu.io/upload_images/5791489-4a0297ce482853b8.png?imageMogr2/auto-orient/" alt></p>
+<p> 5.查看本地效果，输入hexo s.若出现下图，浏览链接。<img src="https://upload-images.jianshu.io/upload_images/5791489-5ec4f58c22413af0.png?imageMogr2/auto-orient/" alt><br> （hexo默认的端口号是4000，但是4000端口如果被其他进程占用的话，这时访问localhost:4000会得不到响应。解决这个问题的方法是指定其他的端口hexo server -p 8081，访问localhost:8081）</p>
+<p>  如果出现下图，测说明成功<img src="https://images2017.cnblogs.com/blog/1108615/201710/1108615-20171021232413224-1288183746.png" alt><br>此时，hexo安装和本地建站告一段落。</p>
+<p>##二.配置github<br>1.<br>首先注册、登录 <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<p>记住自己的Username（很重要）</p>
+<p>然后右上角选择 Create a new repository <a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a></p>
+<p>Repository name（填自己的名字） yourname.github.io(yourname与你的注册用户名一致,这个就是你博客的域名了)<br><img src="http://ww1.sinaimg.cn/large/c38a0784ly1fn8bxjgd4vj20km0grmyu.jpg" alt></p>
+<p>仓库创建完成后，开始生成添加秘钥。在桌面打开git bash here</p>
+<pre><code>ssh-keygen -t rsa -C &quot;Github的注册邮箱地址&quot;
+</code></pre><p>一路Enter过来就好，待秘钥生成完毕，会得到两个文件id_rsa和id_rsa.pub，用带格式的记事本打开id_rsa.pub(一般在)，Ctrl + a复制里面的所有内容，然后进入<br><a href="https://github.com/settings/ssh" target="_blank" rel="noopener">https://github.com/settings/ssh</a><br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png" alt><br>找到 系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png" alt><br>到了这就可以测试一下是否成功了:</p>
+<pre><code>ssh -T git@github.com
+#之后会要你输入yes/no,输入yes就好了。
+</code></pre><p>设置你的账号信息:</p>
+<pre><code>git config --global user.name &quot;你的名字&quot;     #真实名字不是github用户名
+git config --global user.email &quot;邮箱@邮箱.com&quot;    #github邮箱
+</code></pre><p>2.github pages<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153603724-1692083166.png" alt><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153612084-222458600.png" alt></p>
+<p>#三.使用Hexo deploy部署到github<br>在你建立的博客文件夹里找到_config.yml文件，打开滑到最下面</p>
+<pre><code>deploy:
+type: git
+repo: git@github.com:cczeng/cczeng.github.io.git  #这里的网址填你自己的
+branch: master 
+</code></pre><p>repo的值在你github上可以复制粘贴!最好是ssh,因为我用http时会出错<a href="http://ww1.sinaimg.cn/large/c38a0784ly1fn8bznd2k9j20rx0fx0vp.jpg" target="_blank" rel="noopener"></a></p>
+<p><strong>注意：在type: repo: branch: 后面都有一个空格</strong></p>
+<p>安装Git部署插件，输入命令：</p>
+<pre><code>npm install hexo-deployer-git --save  
+</code></pre><p>再输入</p>
+<pre><code>hexo g
+hexo d
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/23/hexo+github 搭建博客/" data-id="cjsleo7td0001wgqkq28b73e3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/23/hexo+github 搭建博客/" data-id="cjslh93ey0001m4qk66x5nymo" class="article-share-link">Share</a>
       
       
     </footer>
